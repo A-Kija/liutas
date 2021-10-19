@@ -1,17 +1,13 @@
-import CowField from './Components/CowField';
-import SheepField from './Components/SheepField';
+import Circle12 from "./Components/Circle12";
 
 function App() {
 
+
     return (
         <>
-            <h3>HeLLo, Cows!</h3>
-            <CowField counterColor={'darkturquoise'}/>
-            <h3>HeLLo, Sheeps!</h3>
-            <SheepField/>
+            <Circle12 color1={'pink'} color2={'yellow'} />
         </>
     )
 }
-
 
 export default App;

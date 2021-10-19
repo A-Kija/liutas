@@ -120,3 +120,17 @@ button {
         }
     }
 }
+
+.circler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin: 20px;
+    span {
+        font-size: 40px;
+    }
+}
