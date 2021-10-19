@@ -134,3 +134,14 @@ button {
         font-size: 40px;
     }
 }
+
+.sq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    border: 4px dotted deeppink;
+    transition: all 4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
