@@ -145,3 +145,47 @@ button {
     border: 4px dotted deeppink;
     transition: all 4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+.zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .zone-show {
+        box-sizing: border-box;
+        width: 70vw;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: 40px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        div {
+            height: 100px;
+            width: 100px;
+            margin: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .zone-enter {
+        width: 30vw;
+        height: 100vh;
+        background-color: lightgreen;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 15px;
+        input,
+        select {
+            margin: 10px;
+        }
+        span {
+            display: inline-block;
+            width: 70px;
+        }
+    }
+}

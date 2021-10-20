@@ -18,7 +18,7 @@ function TextInput() {
     return (
         <>
             <div className="sq">
-                <input onChange={change} type="text" value={value}/>
+                <input onChange={change} type="text" value={value} placeholder={'Ja Ja'}/>
                 <textarea onChange={tchange} value={tvalue}></textarea>
             </div>
         </>
