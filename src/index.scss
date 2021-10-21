@@ -194,25 +194,46 @@ button {
 .field {
     width: 100%;
     box-sizing: border-box;
-    div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &__part {
         background-color: lightgreen;
-        margin: 20px 0;
+        margin: 20px;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
         flex-wrap: wrap;
+        min-width: 200px;
+        min-height: 200px;
+        width: 30%;
+        box-sizing: border-box;
         .cow {
-            height: 100px;
-            width: 100px;
+            height: 140px;
+            width: 140px;
             border-radius: 50%;
             border: 4px dotted deeppink;
             margin: 10px;
         }
         .sheep {
-            height: 100px;
-            width: 100px;
+            height: 140px;
+            width: 140px;
             border: 4px dotted darkturquoise;
             margin: 10px;
         }
+        .horse {
+            height: 100px;
+            width: 100px;
+            border: 4px dotted darkorchid;
+            margin: 30px;
+            transform: rotate(45deg);
+        }
     }
+}
+
+.buttons-holder {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
