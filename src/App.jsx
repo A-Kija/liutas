@@ -17,7 +17,6 @@ function App() {
         });
         setField(fieldCopy);
         localStorage.setItem('animals', JSON.stringify(fieldCopy))
-        console.log(fieldCopy);
     }
 
     const selectField = e => {
@@ -26,11 +25,21 @@ function App() {
 
     const goHome = (id) => {
         const fieldCopy = field.slice();
-        fieldCopy.forEach((a, i) => {
-            if (a.id === id) {
-                fieldCopy.splice(i, 1); 
+        const ind = fieldCopy.findIndex(e => e.id === id);
+        fieldCopy.splice(ind, 1);
+        setField(fieldCopy);
+        localStorage.setItem('animals', JSON.stringify(fieldCopy))
+    }
+
+    const groupGoHome = (group) => {
+        const fieldCopy = field.slice();
+        while(true) {
+            const ind = fieldCopy.findIndex(e => e.animal === group);
+            if (ind < 0) {
+                break;
             }
-        });
+            fieldCopy.splice(ind, 1);
+        }
         setField(fieldCopy);
         localStorage.setItem('animals', JSON.stringify(fieldCopy))
     }
@@ -66,6 +75,11 @@ function App() {
                     <option value={2}>Field Two</option>
                     <option value={3}>Field Three</option>
                 </select>
+            </div>
+            <div className="buttons-holder">
+                <button onClick={() => groupGoHome('cow')}>Go cows</button>
+                <button onClick={() => groupGoHome('sheep')}>Go sheeps</button>
+                <button onClick={() => groupGoHome('horse')}>Go horses</button>
             </div>
         </>
     );
