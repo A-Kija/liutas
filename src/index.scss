@@ -31,7 +31,7 @@ body {
     margin: 20px;
 }
 
-h1 {
+h1.a {
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -195,7 +195,7 @@ button {
     width: 100%;
     box-sizing: border-box;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     &__part {
         background-color: lightgreen;
@@ -248,6 +248,61 @@ button {
         margin: 5px 0;
         font-size: 18px;
     }
+}
+
+.new {
+    background-color: darkslateblue;
+    margin: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 10px;
+    select,
+    input {
+        height: 26px;
+        font-size: 22px;
+        outline: none;
+        margin: 5px 0;
+    }
+    h2 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: lightskyblue;
+    }
+    span {
+        font-size: 22px;
+        margin: 20px 0 0 0;
+        color: lightskyblue;
+    }
+}
+
+.statistics {
+    background-color: darkslateblue;
+    margin: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    h2 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: lightskyblue;
+    }
+    .stats {
+        letter-spacing: 1px;
+        color: lightskyblue;
+        font-size: 28px;
+        margin: 10px;
+        padding: 5px;
+        border: 1px solid deeppink;
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    color: deeppink;
 }
 
 .buttons-holder {
