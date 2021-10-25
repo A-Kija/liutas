@@ -230,23 +230,23 @@ button {
             flex-direction: column;
         }
         .horse {
-            height: 200px;
-            width: 200px;
+            height: 270px;
+            width: 270px;
             border: 4px dotted darkorchid;
-            margin: 60px;
-            transform: rotate(45deg);
+            margin: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            h2 {
-                transform: rotate(-45deg);
-            }
-            button {
-                transform: rotate(-45deg);
-                margin-left: 84px;
-            }
+            border-radius: 20px;
         }
+    }
+    input {
+        outline: none;
+        height: 20px;
+        border: none;
+        margin: 5px 0;
+        font-size: 18px;
     }
 }
 

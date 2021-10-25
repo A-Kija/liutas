@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import FieldAnimal from "./Components/FieldAnimal";
 import idGenerator from "./Common/idGenerator";
 
-
 function App() {
 
     const [field, setField] = useState([]);
@@ -13,6 +12,7 @@ function App() {
         fieldCopy.push({
             id: idGenerator(),
             animal: what,
+            weight: 0,
             field: parseInt(fieldNamber)
         });
         setField(fieldCopy);
@@ -27,6 +27,14 @@ function App() {
         const fieldCopy = field.slice();
         const ind = fieldCopy.findIndex(e => e.id === id);
         fieldCopy.splice(ind, 1);
+        setField(fieldCopy);
+        localStorage.setItem('animals', JSON.stringify(fieldCopy))
+    }
+
+    const addWeight = (id, w) => {
+        const fieldCopy = field.slice();
+        const i = fieldCopy.findIndex(e => e.id === id);
+        fieldCopy[i].weight = parseFloat(w);
         setField(fieldCopy);
         localStorage.setItem('animals', JSON.stringify(fieldCopy))
     }
@@ -48,6 +56,7 @@ function App() {
         const animalsFromStorage = localStorage.getItem('animals');
         if (null !== animalsFromStorage) {
             setField(JSON.parse(animalsFromStorage));
+            console.log(field)
         }
     }, []);
 
@@ -57,13 +66,13 @@ function App() {
         <>
             <div className="field">
                 <div className="field__part">
-                    {field.map((fieldAnimal, i) => <FieldAnimal key={i} field={1} fieldAnimal={fieldAnimal} goHome={goHome}></FieldAnimal>)}
+                    {field.map((fieldAnimal, i) => <FieldAnimal key={i} field={1} fieldAnimal={fieldAnimal} goHome={goHome} addWeight={addWeight}></FieldAnimal>)}
                 </div>
                 <div className="field__part">
-                    {field.map((fieldAnimal, i) => <FieldAnimal key={i} field={2} fieldAnimal={fieldAnimal} goHome={goHome}></FieldAnimal>)}
+                    {field.map((fieldAnimal, i) => <FieldAnimal key={i} field={2} fieldAnimal={fieldAnimal} goHome={goHome} addWeight={addWeight}></FieldAnimal>)}
                 </div>
                 <div className="field__part">
-                    {field.map((fieldAnimal, i) => <FieldAnimal key={i} field={3} fieldAnimal={fieldAnimal} goHome={goHome}></FieldAnimal>)}
+                    {field.map((fieldAnimal, i) => <FieldAnimal key={i} field={3} fieldAnimal={fieldAnimal} goHome={goHome} addWeight={addWeight}></FieldAnimal>)}
                 </div>
             </div>
             <div className="buttons-holder">

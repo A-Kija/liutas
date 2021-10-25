@@ -1,28 +1,26 @@
+import OneAnimal from "./OneAnimal";
 
-function FieldAnimal({ fieldAnimal, field, goHome }) {
+function FieldAnimal({ fieldAnimal, field, goHome, addWeight }) {
 
 
     if (field === fieldAnimal.field && 'cow' === fieldAnimal.animal) {
         return (
             <div className="cow">
-                <h2>{fieldAnimal.id}</h2>
-                <button onClick={() => goHome(fieldAnimal.id)}>Go home</button>
+                <OneAnimal goHome={goHome} addWeight={addWeight} fieldAnimal={fieldAnimal} ></OneAnimal>
             </div>
         );
     }
     else if (field === fieldAnimal.field && 'sheep' === fieldAnimal.animal) {
         return (
             <div className="sheep">
-                <h2>{fieldAnimal.id}</h2>
-                <button onClick={() => goHome(fieldAnimal.id)}>Go home</button>
+                <OneAnimal goHome={goHome} addWeight={addWeight} fieldAnimal={fieldAnimal} ></OneAnimal>
             </div>
         );
     }
     else if (field === fieldAnimal.field && 'horse' === fieldAnimal.animal) {
         return (
             <div className="horse">
-                <h2>{fieldAnimal.id}</h2>
-                <button onClick={() => goHome(fieldAnimal.id)}>Go home</button>
+                <OneAnimal goHome={goHome} addWeight={addWeight} fieldAnimal={fieldAnimal} ></OneAnimal>
             </div>
         );
     }
