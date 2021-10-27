@@ -21,6 +21,36 @@
             min-width: 140px;
             box-sizing: border-box;
             margin: 10px;
+            &__name {
+                color: ghostwhite;
+                font-size: 30px;
+                text-align: center;
+                padding: 0 0 0 0;
+            }
+            &__type {
+                color: yellow;
+                font-size: 20px;
+                text-align: center;
+                padding: 0 0 20px 0;
+            }
+            &__stats {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                flex-direction: column;
+                color: paleturquoise;
+                font-size: 16px;
+                text-align: center;
+                padding: 0 0 20px 0;
+                width: 100%;
+                span {
+                    i {
+                        font-size: 14px;
+                        color: lightcoral;
+                        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    }
+                }
+            }
         }
     }
 }
