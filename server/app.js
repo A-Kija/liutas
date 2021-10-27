@@ -14,6 +14,7 @@ app.use(express.json());
 const con = mysql.createConnection({
     host: "localhost",
     user: "root",
+    database: "zoo",
     password: ""
 });
 
@@ -34,6 +35,21 @@ app.get('/labas/:id', (req, res) => {
 app.get('/test', (req, res) => {
     res.send(JSON.stringify({ test: 'OK' }))
 })
+
+// Visi gyvunai
+app.get('/animals', (req, res) => {
+    const sql = `
+        SELECT *
+        FROM animals
+    `;
+    con.query(sql, (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
+
 
 
 
