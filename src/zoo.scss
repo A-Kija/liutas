@@ -1,8 +1,11 @@
 .zoo {
+    background-color: steelblue;
+    min-width: 100vw;
+    min-height: 100vh;
     &__list {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-between;
+        align-items: flex-start;
         flex-wrap: wrap;
         padding: 10px;
         &__animal {
@@ -11,8 +14,13 @@
             align-items: center;
             flex-direction: column;
             padding: 5px;
-            border: 3px solid springgreen;
+            border: 3px solid ghostwhite;
             border-radius: 3px;
+            width: 100%;
+            max-width: 200px;
+            min-width: 140px;
+            box-sizing: border-box;
+            margin: 10px;
         }
     }
 }
