@@ -31,6 +31,10 @@ app.get('/labas/:id', (req, res) => {
     res.send(`Pats tu ${req.params.id}.`)
 })
 
+app.get('/test', (req, res) => {
+    res.send(JSON.stringify({ test: 'OK' }))
+})
+
 
 
 
