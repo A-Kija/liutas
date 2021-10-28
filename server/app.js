@@ -72,6 +72,46 @@ app.post('/animals', (req, res) => {
     })
 })
 
+// Redaguoja gyvuna
+// UPDATE table_name
+// SET column1 = value1, column2 = value2, ...
+// WHERE condition;
+app.put('/animals/:id', (req, res) => {
+    const sql = `
+        UPDATE animals
+        SET name = ?, type = ?, weight = ?, born = ?
+        WHERE id = ?
+    `;
+    con.query(sql, [
+        req.body.name,
+        req.body.type,
+        req.body.weight,
+        req.body.born,
+        req.params.id
+    ], (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
+
+// Trina gyvuna
+// DELETE FROM table_name
+// WHERE some_column = some_value
+app.delete('/animals/:id', (req, res) => {
+    const sql = `
+        DELETE FROM animals
+        WHERE id = ?
+        `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
 
 
 

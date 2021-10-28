@@ -1,7 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
 .zoo {
     background-color: steelblue;
     min-width: 100vw;
     min-height: 100vh;
+    position: relative;
     &__list {
         display: flex;
         justify-content: space-between;
@@ -72,11 +77,15 @@
         &__input {
             width: 50vw;
             margin: 10px 0;
+            &__buttons {
+                display: flex;
+            }
             span {
                 display: inline-block;
                 width: 15%;
                 padding: 0 0 0 20px;
-                color: white
+                color: white;
+                min-width: 70px;
             }
             input {
                 border: none;
@@ -85,6 +94,21 @@
             button {
                 margin-left: 15px;
             }
+        }
+    }
+    &__modal {
+        position: absolute;
+        left: 10vw;
+        // width: 90%;
+        top: 0;
+        background-color: paleturquoise;
+        border: 3px solid white;
+        box-shadow: 2px 2px 2px gray;
+        .zoo__form__input {
+            width: 40vw;
+        }
+        .zoo__form {
+            width: 80vw;
         }
     }
 }

@@ -1,10 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-
-function ZooCreate({create}) {
-
-    
-
+function ZooModal({showModal, hide, animal, edit, remove}) {
     const [inputs, setInputs] = useState({
         name: '',
         type: '',
@@ -12,25 +8,39 @@ function ZooCreate({create}) {
         born: ''
     })
 
+    useEffect(() => {
+        setInputs({
+            name: animal.name,
+            type: animal.type,
+            weight: animal.weight,
+            born: animal.born.slice(0,10)
+        })
+    },[animal])
+
+    const handleEdit = () => {
+        edit({
+            name: inputs.name,
+            type: inputs.type,
+            weight: inputs.weight,
+            born: inputs.born
+        }, animal.id)
+    }
+
     const formControl = (e, what) => {
         const inputsCopy = { ...inputs };
         inputsCopy[what] = e.target.value;
         setInputs(inputsCopy);
     }
 
-    const handleCreate = () => {
-        create(inputs);
-        setInputs({
-            name: '',
-            type: '',
-            weight: '',
-            born: ''
-        });
-    }
+
 
     return (
-        <div className="zoo__form">
-            <h2>Add new animal</h2>
+        <div className="zoo__modal" style={{
+            display: showModal ? 'flex' : 'none',
+            top: window.scrollY + 100 + 'px'
+            }}>
+            <div className="zoo__form">
+            <h2>Edit animal</h2>
             <div className="zoo__form__input">
                 <span>Name</span><input type="text" value={inputs.name} onChange={(e) => formControl(e, 'name')} />
             </div>
@@ -43,11 +53,14 @@ function ZooCreate({create}) {
             <div className="zoo__form__input">
             <span>Born date</span><input type="date" value={inputs.born} onChange={(e) => formControl(e, 'born')} />
             </div>
-            <div className="zoo__form__input">
-            <button onClick={handleCreate}>Add</button>
+            <div className="zoo__form__input__buttons">
+            <button onClick={handleEdit}>Save</button>
+            <button onClick={hide}>Cancel</button>
+            <button onClick={() => remove(animal.id)}>Delete</button>
             </div>
+        </div>
         </div>
     )
 }
 
-export default ZooCreate;
+export default ZooModal;
