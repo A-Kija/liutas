@@ -50,6 +50,28 @@ app.get('/animals', (req, res) => {
     })
 })
 
+// Prideti gyvuna
+// INSERT INTO table_name (column1, column2, column3, ...)
+// VALUES (value1, value2, value3, ...);
+app.post('/animals', (req, res) => {
+    const sql = `
+        INSERT INTO animals
+        (name, type, weight, born)
+        VALUES (?, ?, ?, ?)
+    `;
+    con.query(sql, [
+        req.body.name,
+        req.body.type,
+        req.body.weight,
+        req.body.born
+    ], (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
+
 
 
 
