@@ -112,7 +112,54 @@ app.delete('/animals/:id', (req, res) => {
     })
 })
 
+// Randa visus skirtingus gyvunu tipus
+// SELECT DISTINCT column1, column2, ...
+// FROM table_name;
+app.get('/animals-type', (req, res) => {
+    const sql = `
+        SELECT DISTINCT type
+        FROM animals
+    `;
+    con.query(sql, (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
 
+// rodo tik tam tikro tipo gyvunus
+app.get('/animals-filter/:t', (req, res) => {
+    const sql = `
+        SELECT *
+        FROM animals
+        WHERE type = ?
+    `;
+    con.query(sql, [req.params.t], (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
+
+// paieska pagal varda
+// SELECT column1, column2, ...
+// FROM table_name
+// WHERE columnN LIKE pattern;
+app.get('/animals-name', (req, res) => {
+    const sql = `
+        SELECT *
+        FROM animals
+        WHERE name LIKE ?
+    `;
+    con.query(sql, ['%' + req.query.s + '%'], (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
 
 
 
