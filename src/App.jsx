@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ZooCreate from "./Components/ZooCreate";
 import ZooList from "./Components/ZooList";
 import ZooModal from "./Components/ZooModal";
+import ZooNav from "./Components/ZooNav";
 function App() {
 
 
@@ -63,6 +64,7 @@ function App() {
 
     return (
         <div className="zoo">
+            <ZooNav></ZooNav>
             <ZooCreate create={create}></ZooCreate>
             <ZooList animals={animals} modal={modal}></ZooList>
             <ZooModal edit={edit} remove={remove} hide={hide} animal={modalAnimal} showModal={showModal}></ZooModal>
