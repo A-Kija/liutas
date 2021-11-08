@@ -135,5 +135,16 @@
         span {
             padding: 0 10px;
         }
+        &__gstat {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            color: ghostwhite;
+            span {
+                padding: 5px;
+                margin: 5px;
+                border: 1px solid white;
+            }
+        }
     }
 }

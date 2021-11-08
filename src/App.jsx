@@ -28,6 +28,7 @@ function App() {
         weight: 0,
         average: 0
     })
+    const [groupStats, setGroupStats] = useState([]);
 
     const dateOnly = (data) => {
         return data.map(a => {
@@ -81,6 +82,13 @@ function App() {
     }, [lastUpdate])
 
     useEffect(() => {
+        axios.get('http://localhost:3003/group-stats')
+            .then(res => {
+                setGroupStats(res.data);
+            })
+    }, [lastUpdate])
+
+    useEffect(() => {
         axios.get('http://localhost:3003/animals-type')
             .then(res => {
                 setTypes(res.data);
@@ -126,7 +134,7 @@ function App() {
 
     return (
         <div className="zoo">
-            <ZooStats stats={stats}></ZooStats>
+            <ZooStats stats={stats} groupStats={groupStats}></ZooStats>
             <ZooNav types={types} search={setSearchBy} filter={setFilterBy} sort={sort} reset={reset}></ZooNav>
             <ZooCreate create={create}></ZooCreate>
             <ZooList animals={animals} modal={modal}></ZooList>

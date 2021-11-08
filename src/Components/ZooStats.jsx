@@ -1,4 +1,4 @@
-function ZooStats({stats}) {
+function ZooStats({stats, groupStats}) {
 
 
     return (
@@ -8,8 +8,10 @@ function ZooStats({stats}) {
                 <span><i>Animals Weight:</i> <b>{stats.weight.toFixed(2)} kg</b></span>
                 <span><i>Animals Average Weight:</i> <b>{stats.average.toPrecision(5)} kg</b></span>
             </div>
-            <div className="zoo__stats__stat">
-                
+            <div className="zoo__stats__gstat">
+                {
+                    groupStats.map(s => <span key={s.type}><i>{s.type}</i> <b>{s.count}</b></span>)
+                }
             </div>
         </div>
     )
