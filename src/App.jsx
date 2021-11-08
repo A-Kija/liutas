@@ -5,6 +5,7 @@ import ZooList from "./Components/ZooList";
 import ZooModal from "./Components/ZooModal";
 import ZooNav from "./Components/ZooNav";
 import animalSort from "./Common/animalsSort";
+import ZooStats from "./Components/ZooStats";
 function App() {
 
 
@@ -113,6 +114,7 @@ function App() {
 
     return (
         <div className="zoo">
+            <ZooStats></ZooStats>
             <ZooNav types={types} search={setSearchBy} filter={setFilterBy} sort={sort} reset={reset}></ZooNav>
             <ZooCreate create={create}></ZooCreate>
             <ZooList animals={animals} modal={modal}></ZooList>
