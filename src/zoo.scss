@@ -147,4 +147,17 @@
             }
         }
     }
+    &__msg {
+        background-color: purple;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.6s;
+        overflow: hidden;
+        span {
+            padding: 5px;
+            margin: 5px;
+            color: tan;
+        }
+    }
 }

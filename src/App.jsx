@@ -6,6 +6,7 @@ import ZooModal from "./Components/ZooModal";
 import ZooNav from "./Components/ZooNav";
 import animalSort from "./Common/animalsSort";
 import ZooStats from "./Components/ZooStats";
+import ZooMsg from "./Components/ZooMsg";
 function App() {
 
 
@@ -29,12 +30,24 @@ function App() {
         average: 0
     })
     const [groupStats, setGroupStats] = useState([]);
+    const [showMsg, setShowMsg] = useState(false);
+    const msg = useRef('labas');
 
     const dateOnly = (data) => {
         return data.map(a => {
             a.born = a.born.slice(0, 10);
             return a;
         });
+    }
+
+    const addMsg = (text) => {
+        msg.current = text;
+        setShowMsg(true);
+        setTimeout(() => {clearMsg()}, 2000);
+    }
+
+    const clearMsg = () => {
+        setShowMsg(false)
     }
 
     const sort = (by) => {
@@ -98,6 +111,7 @@ function App() {
     const create = animal => {
         axios.post('http://localhost:3003/animals', animal)
             .then(() => {
+                addMsg('Animal was added.')
                 setLastUpdate(Date.now());
             })
     }
@@ -134,6 +148,7 @@ function App() {
 
     return (
         <div className="zoo">
+            <ZooMsg msg={msg.current} showMsg={showMsg}></ZooMsg>
             <ZooStats stats={stats} groupStats={groupStats}></ZooStats>
             <ZooNav types={types} search={setSearchBy} filter={setFilterBy} sort={sort} reset={reset}></ZooNav>
             <ZooCreate create={create}></ZooCreate>
