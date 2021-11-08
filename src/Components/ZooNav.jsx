@@ -25,6 +25,9 @@ function ZooNav({ types, filter, reset, search, sort }) {
     const resetHandler = () => {
         reset();
         setFilterValue('');
+        setSearchValue('');
+        setSortValue('');
+        sort('');
     }
 
     return (

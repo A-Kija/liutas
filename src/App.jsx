@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ZooCreate from "./Components/ZooCreate";
 import ZooList from "./Components/ZooList";
 import ZooModal from "./Components/ZooModal";
@@ -20,7 +20,8 @@ function App() {
     const [types, setTypes] = useState([])
     const [filterBy, setFilterBy] = useState('')
     const [searchBy, setSearchBy] = useState('')
-    const [sortBy, setSortBy] = useState('')
+    // const [sortBy, setSortBy] = useState('')
+    const sortBy = useRef('');
 
     const dateOnly = (data) => {
         return data.map(a => {
@@ -29,43 +30,40 @@ function App() {
         });
     }
 
-    // const sort = (by) => {
-    //     setAnimals(animalSort(animals, by));
-    //     setSortBy(by);
-    // }
+    const sort = (by) => {
+        setAnimals(animalSort(animals, by));
+        sortBy.current = by;
+    }
 
-    useEffect(() => {
-        if (sortBy) {
-            setAnimals(animalSort(animals, sortBy));
-        }
-    }, [sortBy])
-
+    // useEffect(() => {
+    //     if (sortBy) {
+    //         setAnimals(animalSort(animals, sortBy));
+    //     }
+    // }, [sortBy])
 
     useEffect(() => {
         if (filterBy) {
         axios.get('http://localhost:3003/animals-filter/'+filterBy)
             .then(res => {
-                setAnimals(dateOnly(res.data));
+                setAnimals(animalSort(dateOnly(res.data), sortBy.current));
             })
         }
     }, [filterBy])
-
 
     useEffect(() => {
         if (searchBy) {
         axios.get('http://localhost:3003/animals-name/?s='+searchBy)
             .then(res => {
-                setAnimals(dateOnly(res.data));
+                setAnimals(animalSort(dateOnly(res.data), sortBy.current));
             })
         }
     }, [searchBy])
 
-
     useEffect(() => {
         axios.get('http://localhost:3003/animals')
             .then(res => {
-                // setAnimals(animalSort(dateOnly(res.data), sortBy));
-                setAnimals(dateOnly(res.data));
+                setAnimals(animalSort(dateOnly(res.data), sortBy.current));
+                // setAnimals(dateOnly(res.data));
             })
     }, [lastUpdate])
 
@@ -104,7 +102,6 @@ function App() {
         setLastUpdate(Date.now());
     }
 
-
     const modal = (animal) => {
         setShowModal(true);
         setModalAnimal(animal);
@@ -116,7 +113,7 @@ function App() {
 
     return (
         <div className="zoo">
-            <ZooNav types={types} search={setSearchBy} filter={setFilterBy} sort={setSortBy} reset={reset}></ZooNav>
+            <ZooNav types={types} search={setSearchBy} filter={setFilterBy} sort={sort} reset={reset}></ZooNav>
             <ZooCreate create={create}></ZooCreate>
             <ZooList animals={animals} modal={modal}></ZooList>
             <ZooModal edit={edit} remove={remove} hide={hide} animal={modalAnimal} showModal={showModal}></ZooModal>
