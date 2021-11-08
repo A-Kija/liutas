@@ -23,6 +23,11 @@ function App() {
     const [searchBy, setSearchBy] = useState('')
     // const [sortBy, setSortBy] = useState('')
     const sortBy = useRef('');
+    const [stats, setStats] = useState({
+        count: 0,
+        weight: 0,
+        average: 0
+    })
 
     const dateOnly = (data) => {
         return data.map(a => {
@@ -65,6 +70,13 @@ function App() {
             .then(res => {
                 setAnimals(animalSort(dateOnly(res.data), sortBy.current));
                 // setAnimals(dateOnly(res.data));
+            })
+    }, [lastUpdate])
+
+    useEffect(() => {
+        axios.get('http://localhost:3003/stats')
+            .then(res => {
+                setStats(res.data[0]);
             })
     }, [lastUpdate])
 
@@ -114,7 +126,7 @@ function App() {
 
     return (
         <div className="zoo">
-            <ZooStats></ZooStats>
+            <ZooStats stats={stats}></ZooStats>
             <ZooNav types={types} search={setSearchBy} filter={setFilterBy} sort={sort} reset={reset}></ZooNav>
             <ZooCreate create={create}></ZooCreate>
             <ZooList animals={animals} modal={modal}></ZooList>

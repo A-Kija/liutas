@@ -161,6 +161,25 @@ app.get('/animals-name', (req, res) => {
     })
 })
 
+// Bendra gyvunu statistika
+// SELECT COUNT(column_name)
+// FROM table_name
+// WHERE condition;
+app.get('/stats', (req, res) => {
+    const sql = `
+        SELECT COUNT(id) as count, 
+        SUM(weight) as weight,
+        AVG(weight) as average
+        FROM animals
+    `;
+    con.query(sql, (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
+
 
 
 
