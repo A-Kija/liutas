@@ -332,3 +332,25 @@ h1 {
         }
     }
 }
+
+.antarctica {
+    h2 {
+        color: darkcyan;
+    }
+    &__menu {
+        padding: 20px;
+        background-color: darkturquoise;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: darkcyan;
+        li {
+            list-style: none;
+            a {
+                color: white;
+                padding: 0 15px;
+                text-decoration: none;
+            }
+        }
+    }
+}
