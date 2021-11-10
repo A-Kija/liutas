@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function RouterAntarctica () {
     return (
@@ -9,6 +9,7 @@ function RouterAntarctica () {
             <li><Link to="polar-bear">Polar Bear</Link></li>
             <li><Link to="seal">Seal</Link></li>
         </ul>
+        <Outlet/>
         </div>
     )
 }
