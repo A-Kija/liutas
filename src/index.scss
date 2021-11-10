@@ -354,3 +354,23 @@ h1 {
         }
     }
 }
+
+.context {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: darkturquoise;
+    button {
+        background-color: dodgerblue;
+    }
+    .family {
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid dodgerblue;
+        h2 {
+            color: whitesmoke;
+        }
+    }
+}
