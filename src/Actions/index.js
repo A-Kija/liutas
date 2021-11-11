@@ -1,4 +1,4 @@
-import { ADD_ONE, REM_ONE_ONE } from "../Constants/types";
+import { ADD_ONE, DO_MULTIPLY, REM_ONE_ONE } from "../Constants/types";
 
 export function actionAddOne() {
     return {
@@ -10,4 +10,12 @@ export function actionRemOneOne() {
     return {
         type: REM_ONE_ONE
     }
+}
+
+export function actionDoMultiplay(payload) {
+    return {
+        type: DO_MULTIPLY,
+        payload: payload
+    }
+
 }
