@@ -1,11 +1,14 @@
-import { useState} from "react";
+import { useReducer } from "react";
 function App() {
 
-    const [count, setCount] = useState(0);
+    // const [count, setCount] = useState(0);
+    const [count, countDispatch] = useReducer(countReducer, 0)
 
-    const addOne = () => setCount(count + 1);
+    // const addOne = () => setCount(count + 1);
 
-    const remOneOne = () => setCount(count - 11);
+    
+
+    // const remOneOne = () => setCount(count - 11);
 
     return (
         <div className="reducer">
