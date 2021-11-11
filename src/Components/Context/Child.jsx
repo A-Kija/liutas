@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Msg1, Msg2 } from "../../App";
+import { Msg1, Msg2 } from "../../AppContext";
 
 function Child() {
 
