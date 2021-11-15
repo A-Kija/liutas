@@ -1,12 +1,12 @@
-const idGenerator = () => {
-    let id = localStorage.getItem('lastId');
+const idGenerator = (key = 'lastId') => {
+    let id = localStorage.getItem(key);
     if (null === id) {
-        localStorage.setItem('lastId', 1);
+        localStorage.setItem(key, 1);
         return 1;
     }
     id = parseInt(id);
     id++;
-    localStorage.setItem('lastId', id);
+    localStorage.setItem(key, id);
     return id;
 }
 export default idGenerator

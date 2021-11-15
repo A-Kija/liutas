@@ -1,18 +1,29 @@
 import { useReducer } from 'react';
-import { add_left, add_right } from '../../Actions/domino';
+import { addLeft, addRight } from '../../Actions/domino';
 import { dominoPlateReducer } from '../../Reducers/dominoReducer';
 
-function Create() {
-    const [plate, dispachPlate] = useReducer(dominoPlateReducer, {left: 0, right: 0});
+function Create({create}) {
+    const [plate, dispachPlate] = useReducer(dominoPlateReducer, {
+        left: 0,
+        leftErr: false,
+        right: 0,
+        rightErr: false
+    });
 
     const handleInput = (e, P) => {
         if ('L' === P) {
-            dispachPlate(add_left(e.target.value));
+            dispachPlate(addLeft(e.target.value));
         }
         if ('R' === P) {
-            dispachPlate(add_right(e.target.value));
+            dispachPlate(addRight(e.target.value));
         }
-        
+    }
+
+    const handleCreate = () => {
+        create({
+            left: plate.left,
+            right: plate.right
+        })
     }
 
     return (
@@ -22,10 +33,14 @@ function Create() {
             </div>
             <div className="domino__create__body">
                 <div>
-                <input type="text" onChange={e => handleInput(e, 'L')} value={plate.left}></input>
-                <input type="text" onChange={e => handleInput(e, 'R')} value={plate.right}></input>
+                <input type="text" style={{
+                    backgroundColor: plate.leftErr ? 'deeppink' : 'white'
+                }} onChange={e => handleInput(e, 'L')} value={plate.left}></input>
+                <input type="text" style={{
+                    backgroundColor: plate.rightErr ? 'deeppink' : 'white'
+                }} onChange={e => handleInput(e, 'R')} value={plate.right}></input>
                 </div>
-                <button>Create</button>
+                <button onClick={handleCreate}>Create</button>
             </div>
         </div>
     )

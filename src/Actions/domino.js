@@ -1,15 +1,28 @@
-import { ADD_LEFT, ADD_RIGHT } from "../Constants/dominoTypes";
+import { ADD_DOMINO, ADD_LEFT, ADD_RIGHT, GET_DOMINOS } from "../Constants/dominoTypes";
 
-export function add_left(payload) {
+export function addLeft(payload) {
     return {
         type: ADD_LEFT,
         payload: payload
     }
 }
 
-export function add_right(payload) {
+export function addRight(payload) {
     return {
         type: ADD_RIGHT,
         payload: payload
+    }
+}
+
+export function getDominos() {
+    return {
+        type: GET_DOMINOS,
+    }
+}
+
+export function addDomino(domino) {
+    return {
+        type: ADD_DOMINO,
+        payload: domino
     }
 }
