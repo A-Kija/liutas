@@ -1,5 +1,21 @@
-import { ADD_DOMINO, ADD_LEFT, ADD_RIGHT, GET_DOMINOS } from "../Constants/dominoTypes";
+import { ADD_DOMINO, ADD_LEFT, ADD_RIGHT, GET_DOMINOS, HIDE_MESSAGE, RESET_LEFT_RIGHT, SHOW_MESSAGE } from "../Constants/dominoTypes";
 import idGenerator from "../Common/idGenerator";
+
+export function messageReducer(state, action) {
+    const newState = {...state };
+    switch (action.type) {
+        case SHOW_MESSAGE:
+            newState.text = action.payload;
+            newState.show = true;
+            break;
+        case HIDE_MESSAGE:
+            newState.show = false;
+            break;
+        default:
+            newState = state;
+    }
+    return newState;
+}
 
 export function dominosReducer(state, action) {
     let newState = [...state];
@@ -25,8 +41,15 @@ export function dominosReducer(state, action) {
 
 }
 
+export const startPos = {
+    left: 0,
+    leftErr: false,
+    right: 0,
+    rightErr: false
+};
+
 export function dominoPlateReducer(state, action) {
-    const newState = {...state };
+    let newState = {...state };
     let number = parseInt(action.payload);
     switch (action.type) {
         case ADD_LEFT:
@@ -58,6 +81,9 @@ export function dominoPlateReducer(state, action) {
                 newState.rightErr = true;
             }
             newState.right = number;
+            break;
+        case RESET_LEFT_RIGHT:
+            newState = startPos;
             break;
         default:
     }
