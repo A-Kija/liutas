@@ -27,9 +27,11 @@ function App() {
         <div className="domino">
             <h1>Domino</h1>
         <Create create={create}></Create>
+        <div className="domino__table">
         {
             dominos.map(p => <Plate key={p.id} plate={p}></Plate>)
         }
+        </div>
 
         <Message msg={message}></Message>
         </div>

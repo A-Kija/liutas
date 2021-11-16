@@ -1,5 +1,6 @@
 @import 'App.scss';
-@import 'zoo';
+// @import 'zoo';
+@import 'domino';
 body {
     margin: 0;
     display: flex;
@@ -388,6 +389,13 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    &__table {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 70%;
+    }
     &__msg {
         background-color: deeppink;
         padding: 20px 50px;

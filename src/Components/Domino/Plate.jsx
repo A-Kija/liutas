@@ -1,7 +1,16 @@
+import Dot from "./Dot";
+
 function Plate({plate}) {
 
     return (
-        <div>{plate.left}|{plate.right}</div>
+        <div className="plate">
+            <div className="left-half">
+                <Dot dots={plate.left}></Dot>
+            </div>
+            <div className="right-half">
+                <Dot dots={plate.right}></Dot>
+            </div>
+        </div>
     )
 }
 

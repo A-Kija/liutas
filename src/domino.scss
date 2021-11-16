@@ -1,0 +1,123 @@
+@mixin position($all) {
+    top: $all;
+    right: $all;
+    bottom: $all;
+    left: $all;
+}
+
+.plate {
+    width: 100px;
+    margin: auto;
+    position: relative;
+    margin: 20px;
+    top: 20px;
+    .left-half,
+    .right-half {
+        box-sizing: border-box;
+        float: left;
+        width: 50px;
+        height: 45px;
+        margin: auto;
+        border: 3px solid #222;
+        &:before {
+            content: "";
+            position: absolute;
+            @include position(-1px);
+            z-index: 1;
+            border: 1px solid white;
+            border-radius: 4px;
+        }
+    }
+    .left-half {
+        border-right: 1.8px solid #222;
+        border-radius: 5px 0px 0px 5px;
+    }
+    .right-half {
+        border-left: 1.8px solid #222;
+        border-radius: 0px 5px 5px 0px;
+    }
+    .dot-container {
+        position: relative;
+        right: 5px;
+        width: 48px;
+        height: 40px;
+    }
+    .dot {
+        position: relative;
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        border-radius: 50%;
+    }
+    .dot-container-0 {}
+    .dot-container-1 {
+        .dot {
+            top: 15px;
+            left: 23px;
+        }
+    }
+    .dot-container-2 {
+        top: 5px;
+        left: 5px;
+        .dot:last-child {
+            left: 24px;
+            top: 10px
+        }
+    }
+    .dot-container-3 {
+        top: 5px;
+        left: 5px;
+        .dot:nth-child(2) {
+            left: 12px;
+        }
+        .dot:last-child {
+            left: 24px;
+        }
+    }
+    .dot-container-4 {
+        .dot:nth-child(1) {
+            left: 12px;
+            top: 5px;
+        }
+        .dot:nth-child(2) {
+            top: -5px;
+            left: 34px;
+        }
+        .dot:nth-child(3) {
+            left: 12px;
+            top: 5px;
+        }
+        .dot:nth-child(4) {
+            top: -5px;
+            left: 34px;
+        }
+    }
+    .dot-container-5 {
+        .dot:nth-child(1) {
+            left: 12px;
+            top: 5px;
+        }
+        .dot:nth-child(2) {
+            top: -5px;
+            left: 34px;
+        }
+        .dot:nth-child(3) {
+            left: 12px;
+            top: 5px;
+        }
+        .dot:nth-child(4) {
+            top: -5px;
+            left: 34px;
+        }
+        .dot:nth-child(5) {
+            top: -25px;
+            left: 23px;
+        }
+    }
+    .dot-container-6 {
+        .dot {
+            float: right;
+            margin: 5px 1.6px;
+        }
+    }
+} // End Domino Styling

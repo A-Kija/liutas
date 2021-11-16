@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { addLeft, addRight } from '../../Actions/domino';
+import { addLeft, addRight, resetLeftRight } from '../../Actions/domino';
 import { dominoPlateReducer, startPos } from '../../Reducers/dominoReducer';
 
 
@@ -19,7 +19,8 @@ function Create({create}) {
         create({
             left: plate.left,
             right: plate.right
-        })
+        });
+        dispachPlate(resetLeftRight());
     }
 
     return (
