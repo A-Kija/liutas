@@ -407,16 +407,33 @@ h1 {
             outline: none;
             text-align: center;
         }
-        &__ok {
-            width: 50px;
-            font-size: 10px;
-            border: 1px solid lightgreen;
-            text-align: center;
-            cursor: pointer;
-            padding: 5px;
-            margin-top: 5px;
-            color: lightgreen;
-            border-radius: 4px;
+        &__buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &__ok {
+                width: 40px;
+                font-size: 10px;
+                border: 1px solid lightgreen;
+                text-align: center;
+                cursor: pointer;
+                padding: 5px;
+                margin-top: 5px;
+                color: lightgreen;
+                border-radius: 4px;
+            }
+            &__x {
+                width: 20px;
+                font-size: 10px;
+                border: 1px solid red;
+                text-align: center;
+                cursor: pointer;
+                padding: 5px;
+                margin-top: 5px;
+                margin-left: 10px;
+                color: red;
+                border-radius: 4px;
+            }
         }
     }
     &__table {

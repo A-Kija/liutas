@@ -1,11 +1,6 @@
 function Dot({ dots }) {
 
     switch (dots) {
-        case 0:
-            return (
-                <div className="dot-container dot-container-0">
-                </div>
-            )
         case 1:
             return (
                 <div className="dot-container dot-container-1">
@@ -55,6 +50,11 @@ function Dot({ dots }) {
                     <div className="dot"></div>
                     <div className="dot"></div>
                     <div className="dot"></div>
+                </div>
+            )
+        default:
+            return (
+                <div className="dot-container dot-container-0">
                 </div>
             )
     }

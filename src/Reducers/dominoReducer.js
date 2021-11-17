@@ -1,4 +1,4 @@
-import { ADD_DOMINO, ADD_LEFT, ADD_RIGHT, GET_DOMINOS, HIDE_MESSAGE, RESET_LEFT_RIGHT, SHOW_MESSAGE } from "../Constants/dominoTypes";
+import { ADD_DOMINO, ADD_LEFT, ADD_RIGHT, DEL_DOMINO, GET_DOMINOS, HIDE_MESSAGE, RESET_LEFT_RIGHT, SHOW_MESSAGE } from "../Constants/dominoTypes";
 import idGenerator from "../Common/idGenerator";
 
 export function messageReducer(state, action) {
@@ -20,6 +20,11 @@ export function messageReducer(state, action) {
 export function dominosReducer(state, action) {
     let newState = [...state];
     switch (action.type) {
+        case DEL_DOMINO:
+            const i = newState.findIndex(domino => domino.id === action.payload);
+            newState.splice(i, 1);
+            localStorage.setItem('dominos', JSON.stringify(newState));
+            break;
         case GET_DOMINOS:
             const dominos = localStorage.getItem('dominos');
             if (null === dominos) {
