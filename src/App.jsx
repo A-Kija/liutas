@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { addDomino, getDominos, hideMessage, showMessage } from "./Actions/domino";
 import Create from "./Components/Domino/Create";
 import Message from "./Components/Domino/Message";
@@ -11,7 +11,8 @@ function App() {
     const [message, dispachMessage] = useReducer(messageReducer, {
         text: '',
         show: false
-    })
+    });
+    const [editId, setEditId] = useState(14);
 
     useEffect(()=>{
         dispachDominos(getDominos());
@@ -29,7 +30,7 @@ function App() {
         <Create create={create}></Create>
         <div className="domino__table">
         {
-            dominos.map(p => <Plate key={p.id} plate={p}></Plate>)
+            dominos.map(p => <Plate key={p.id} plate={p} editId={editId} selectEdit={setEditId}></Plate>)
         }
         </div>
 
