@@ -1,7 +1,6 @@
 import { ADD_DOMINO, ADD_LEFT, ADD_RIGHT, DEL_DOMINO, GET_DOMINOS, HIDE_MESSAGE, RESET_LEFT_RIGHT, SHOW_MESSAGE, UPDATE_DOMINO } from "../Constants/dominoTypes";
 import idGenerator from "../Common/idGenerator";
 
-
 export function messageReducer(state, action) {
     let newState = {...state };
     switch (action.type) {
@@ -19,7 +18,6 @@ export function messageReducer(state, action) {
 }
 
 export function dominosReducer(state, action) {
-    console.log('alio');
     let newState = [...state];
     let i;
     switch (action.type) {
@@ -36,7 +34,12 @@ export function dominosReducer(state, action) {
             localStorage.setItem('dominos', JSON.stringify(newState));
             break;
         case GET_DOMINOS:
-            newState = action.payload;
+            const dominos = localStorage.getItem('dominos');
+            if (null === dominos) {
+                newState = [];
+            } else {
+                newState = JSON.parse(dominos);
+            }
             break;
         case ADD_DOMINO:
             action.payload.id = idGenerator('dominoId');

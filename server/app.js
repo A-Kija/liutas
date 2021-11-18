@@ -187,12 +187,30 @@ app.get('/stats', (req, res) => {
 // WHERE condition
 // GROUP BY column_name(s)
 // ORDER BY column_name(s);
+
 app.get('/group-stats', (req, res) => {
     const sql = `
         SELECT COUNT(id) as count, type
         FROM animals
         GROUP BY type
         ORDER BY COUNT(id) DESC, type
+    `;
+    con.query(sql, (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
+
+
+//DOMINO
+
+// Visi dominai
+app.get('/dominos', (req, res) => {
+    const sql = `
+        SELECT *
+        FROM dominos
     `;
     con.query(sql, (err, results) => {
         if (err) {

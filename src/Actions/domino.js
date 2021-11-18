@@ -20,9 +20,10 @@ export function resetLeftRight() {
     }
 }
 
-export function getDominos() {
+export function getDominos(from = []) {
     return {
         type: GET_DOMINOS,
+        payload: from
     }
 }
 

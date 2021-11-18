@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 import { addLeft, addRight, resetLeftRight } from '../../Actions/domino';
-import { dominoPlateReducer, startPos } from '../../Reducers/dominoReducer';
+import { dominoPlateReducer, startPos } from '../../Reducers/dominoReducerLocal';
 
 
 function Create({create}) {

@@ -3,8 +3,7 @@ import { addDomino, delDomino, getDominos, hideMessage, showMessage, updateDomin
 import Create from "./Components/Domino/Create";
 import Message from "./Components/Domino/Message";
 import Plate from "./Components/Domino/Plate";
-import { dominosReducer, messageReducer } from "./Reducers/dominoReducer";
-import axios from "axios";
+import { dominosReducer, messageReducer } from "./Reducers/dominoReducerLocal";
 
 function App() {
 
@@ -18,18 +17,7 @@ function App() {
     // CRUD
     //R-ead
     useEffect(() => {
-        axios.get('http://localhost:3003/dominos')
-        .then(res => {
-            console.log(res.data)
-                const dominos = res.data.map(p => {
-                    return {
-                        id: p.id,
-                        left: p.left_side,
-                        right: p.right_side
-                    }
-                });
-                dispachDominos(getDominos(dominos));
-        })
+        dispachDominos(getDominos());
     }, []);
 
     //C-reate
@@ -75,30 +63,28 @@ function App() {
     }
 
 
-    if (dominos) {
-        return (
-            <div className="domino">
-                <h1>Domino</h1>
-                <Create create={create}></Create>
-                <div className="domino__table">
-                    {
-                        dominos.map(p => <Plate
-                            key={p.id}
-                            plate={p}
-                            change={change}
-                            save={save}
-                            editDots={editDots}
-                            selectEdit={selectEdit}
-                            del={deleteDomino}
-                        ></Plate>)
-                    }
-                </div>
 
-                <Message msg={message}></Message>
+    return (
+        <div className="domino">
+            <h1>Domino</h1>
+            <Create create={create}></Create>
+            <div className="domino__table">
+                {
+                    dominos.map(p => <Plate
+                        key={p.id}
+                        plate={p}
+                        change={change}
+                        save={save}
+                        editDots={editDots}
+                        selectEdit={selectEdit}
+                        del={deleteDomino}
+                    ></Plate>)
+                }
             </div>
-        )
-    }
-    return null;
+
+            <Message msg={message}></Message>
+        </div>
+    )
 }
 
 
